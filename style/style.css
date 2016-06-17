@@ -1,0 +1,334 @@
+body{
+    background-color: rgba(204, 204, 204, 0.5);
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+#buttons{
+    display: none;
+}
+#BotaoLogin{
+    display: inline-block;
+  border-radius: 4px;
+  background-color: crimson;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+#BotaoLogin span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#BotaoLogin span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#BotaoLogin:hover span {
+  padding-right: 25px;
+}
+
+#BotaoLogin:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.container{
+    margin-top: 1.5%;
+    border-radius: 4px;
+    background-color: white;
+    height: auto;
+}
+#img_logo{
+    border-radius: 4px 0px 0px 4px;
+}
+.Autenticacao{
+    height: 288px;
+    border-radius: 4px;
+
+}
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+
+}
+table tr {
+    vertical-align: top;
+}
+.lfloat{
+    float: left;
+    width: 45%;
+    text-align: justify;
+}
+.rfloat{
+    float: right;
+    text-align: center;
+    width: 50%;
+}
+.lfloatfooter{
+    float: left;
+    width: 45%;
+    text-align: justify;
+    margin-left: 2%;
+}
+.rfloatfooter{
+    border: thick solid #2781a7;
+    float: right;
+    text-align: center;
+    width: 49%;
+    height: 95%;
+    margin-top: 2px;
+    border-radius: 4px;
+    margin-right: 2px;
+}
+
+
+#linha_autenticacao{
+    width:34%;
+    margin-left: 37%;
+    margin-right: auto;
+    height: 4px;
+    background-color: #2781a7;
+    border-color: #2781a7;
+    border-radius: 4px;
+    margin-top: -9px;
+}
+#btn_iniciar_sessao{
+    background-color: #2781a7;
+    width: 110px;
+    height: 24px;
+    border-radius: 4px;
+    border-color: white;
+    color:white;
+    font-weight: bold;
+}
+#btn_registar{
+    background-color: #2781a7;
+    height: 24px;
+    border-radius: 4px;
+    border-color: white;
+    color:white;
+    font-weight: bold;
+}
+
+.menubar{
+    background-color: rgb(204, 204, 204);
+    height: 42px;
+    line-height: 42px;
+    border-radius: 4px;
+    font-weight: bold;
+
+
+}
+.title{
+    font-size: large;
+    color: #2781a7;
+}
+
+.subtitle{ 
+    font-size: smaller;
+    margin-bottom: 7px;    
+}
+#nav ul { 
+    list-style-type: none;
+    text-align: center;
+
+}
+#nav a { 
+    text-decoration: none;
+    color: white;
+    width: auto;
+}
+#nav li { 
+    display: inline; 
+    padding-right: 30px;
+}
+#nav li:hover{ 
+    display: inline; 
+
+}
+
+#nav a:hover{
+    color: #2781a7;
+    font-size: 101%;
+    border-bottom: 4px solid #2781a7;
+    border-radius: 4px;
+    padding-bottom: 6px;
+
+}
+input{
+    border-color: #2781a7;
+    border-radius: 4px;
+    width: 150px;
+    height: 20px;
+    text-align: center;
+}
+.footer{
+    height: 288px;
+    border-radius: 4px;
+
+}
+
+/*conteudos*/
+#conteudo_pagina{
+
+}
+
+#divPesquisa{
+    background-color:white;
+    border:solid 2px #2781a7;
+    border-radius:4px;
+    width:300px;
+    height:32px;
+    vertical-align:  bottom;
+}
+
+#txtPesquisa{
+    float:left;
+    background-color:transparent;
+    padding-left:5px;  
+    font-size:18px;
+    border:none;
+    height:30px;
+    width:191px;
+}
+
+#btnPesquisa{
+    border: none;
+    float: left;
+    height: 32px;
+    width: 70px;
+    font-weight: bold;
+    background: #2781a7;
+}
+
+#divPesquisa img{
+    float:left;
+    width: 34px;
+    height: 34px;
+}
+
+#divPesquisaCategoria{
+    width: 90%;
+    height: 70px;
+    vertical-align: bottom;
+    display: inline-flex;
+    background-color: #2781a7;
+    border-radius: 4px;
+    margin-left: 5%;
+    margin-top: 1.5%;
+}
+#divPesquisaCategoria img{
+    float:left;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 4px;
+}
+#divPesquisaCategoria #txtPesquisa{
+    background-color:white;
+    border-radius: 0px 4px 4px 0px;
+    margin-left: -3px;
+    height: 38px;
+}
+#divPesquisaCategoria #txtPesquisa:focus{
+    outline: 0;
+}
+#divPesquisaCategoria #btnPesquisa{
+
+    border: none;
+    float: left;
+    height: 40px;
+    width: 100px;
+    font-weight: bold;
+    background: white;
+    border-radius: 4px;
+    margin-left: 10px;
+
+}
+#formPesquisa{
+    margin: auto;
+}
+#categoriaPesquisa{
+    float: left;
+    background-color: white;
+    padding-left: 5px;
+    font-size: 18px;
+    border: none;
+    height: 40px;
+    width: 191px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+#linha_pesquisa{
+    width:90%;
+    height: 4px;
+    background-color: #2781a7;
+    border-color: #2781a7;
+    border-radius: 4px;
+    margin-top: 1.5%;
+}
+
+.center{
+    text-align: center;
+}
+
+.submenu{
+   background-color: #2781a7;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 4px;
+    font-weight: bold;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#navPS ul { 
+    list-style-type: none;
+    text-align: center;
+
+}
+#navPS a { 
+    text-decoration: none;
+    color: white;
+    width: auto;
+}
+#navPS li { 
+    display: inline; 
+    padding-right: 30px;
+}
+#navPS li:hover{ 
+    display: inline; 
+
+}
+
+#navPS a:hover{
+    font-size: 101%;
+    border-bottom: 4px solid white;
+    border-radius: 4px;
+    padding-bottom: 6px;
+
+}
