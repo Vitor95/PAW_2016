@@ -1,16 +1,22 @@
 
 function s(){
     var div = document.getElementById('buttons');
-    if (div.style.display !== 'none') {
-        div.style.display = 'none';
+    
+    if (div.style.display !== 'block') {
+        div.style.display = 'block';
     }
     else {
-        div.style.display = 'block';
+        div.style.display = 'none';
     }
 }
 function init(){
-    document.getElementById('ver').addEventListener('click',s,false);
+    var doc = document.getElementById('ver');
+    
+    if(doc!=null){doc.addEventListener('click',s,false);
+    }
+    
 }
+
 document.addEventListener('DOMContentLoaded',init,false);
 
 

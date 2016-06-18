@@ -130,6 +130,10 @@ table tr {
     color:white;
     font-weight: bold;
 }
+#a_registo{
+    text-decoration: none;
+    color:white;
+}
 
 .menubar{
     background-color: rgb(204, 204, 204);
@@ -241,7 +245,7 @@ input{
 #divPesquisaCategoria img{
     float:left;
     width: 40px;
-    height: 40px;
+    height: 38px;
     background-color: white;
     border-radius: 4px;
 }
@@ -281,7 +285,7 @@ input{
     margin-left: 10px;
 }
 
-#linha_pesquisa{
+#linha{
     width:90%;
     height: 4px;
     background-color: #2781a7;
@@ -332,3 +336,26 @@ input{
     padding-bottom: 6px;
 
 }
+.tables{
+    width: 80%;
+    border-radius: 4px;
+    background-color: #2781a7;
+    text-align: center;
+    font-weight: bold;
+}
+
+.tables tr{
+    height: 30px;
+    background-color: white;
+    color: #2781a7;
+    border-radius: 4px;
+}
+.tables td{
+    vertical-align: middle;
+}
+.table_title{
+    color:black;
+}
+
+
+
