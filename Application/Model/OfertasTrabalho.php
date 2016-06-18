@@ -26,8 +26,9 @@ class OfertasTrabalho {
     private $TipoHorario;
     private $categoria_geral;
     private $categoria_especifica;
+    private $estado;
     
-    function __construct($idoferta, $titulo, $descritivo, $requisitos, $valores_servicos, $periodo_disponivel, $TipoHorario, $categoria_geral, $categoria_especifica) {
+    function __construct($idoferta, $titulo, $descritivo, $requisitos, $valores_servicos, $periodo_disponivel, $TipoHorario, $categoria_geral, $categoria_especifica,$estado) {
         $this->idoferta = $idoferta;
         $this->titulo = $titulo;
         $this->descritivo = $descritivo;
@@ -37,8 +38,17 @@ class OfertasTrabalho {
         $this->TipoHorario = $TipoHorario;
         $this->categoria_geral = $categoria_geral;
         $this->categoria_especifica = $categoria_especifica;
+        $this->estado = $estado;
     }
-    function getIdoferta() {
+    function getEstado() {
+        return $this->estado;
+    }
+
+    function setEstado($estado) {
+        $this->estado = $estado;
+    }
+
+        function getIdoferta() {
         return $this->idoferta;
     }
 
@@ -120,7 +130,8 @@ public function convertObjectToArray(){
                           'periodo_disponivel' => $this->getPeriodo_disponivel(),
                         'TipoHorario' => $this->getTipoHorario(),
                           'categoria_geral' => $this->getCategoria_geral(),
-                        'categoria_especifica' => $this->getCategoria_especifica());        
+                        'categoria_especifica' => $this->getCategoria_especifica(),
+                        'estado' => $this->getEstado());        
         
         return $data;
     }
@@ -129,7 +140,7 @@ public function convertObjectToArray(){
         return self::createObject($data['studentID'], $data['studentName'], $data['courseID']);
     }    
     
-    public static function createObject($idoferta,$titulo,$descritivo,$requisitos,$valores_servicos,$periodo_disponivel,$TipoHorario,$categoria_geral,$categoria_especifica){
+    public static function createObject($idoferta,$titulo,$descritivo,$requisitos,$valores_servicos,$periodo_disponivel,$TipoHorario,$categoria_geral,$categoria_especifica,$estado){
         $ofertas = new OfertasTrabalho();
         $ofertas->setIdoferta($idoferta);
         $ofertas->setTitulo($titulo);
@@ -140,6 +151,7 @@ public function convertObjectToArray(){
         $ofertas->setTipoHorario($TipoHorario);
         $ofertas->setCategoria_geral($categoria_geral);
         $ofertas->setCategoria_especifica($categoria_especifica);
+        $ofertas->setEstado($estado);
         
         return $ofertas;
     }

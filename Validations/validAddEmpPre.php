@@ -11,7 +11,7 @@ $num3=filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
 $num4=filter_input(INPUT_POST, 'tipo', FILTER_SANITIZE_SPECIAL_CHARS);
 $num5=filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
 $num6=filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
-print_r($num);
+
 $a=new Utilizador("", $num, $num1, $num2, $num3, $num4, $num5, $num6);
 $w=new UtilizadorManager();
 
