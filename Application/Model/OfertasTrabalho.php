@@ -27,8 +27,10 @@ class OfertasTrabalho {
     private $categoria_geral;
     private $categoria_especifica;
     private $estado;
+    private $dataCriacao;
+    private $dataExpiracao;
     
-    function __construct($idoferta, $titulo, $descritivo, $requisitos, $valores_servicos, $periodo_disponivel, $TipoHorario, $categoria_geral, $categoria_especifica,$estado) {
+    function __construct($idoferta, $titulo, $descritivo, $requisitos, $valores_servicos, $periodo_disponivel, $TipoHorario, $categoria_geral, $categoria_especifica,$estado,$dataCriacao,$dataExpiracao) {
         $this->idoferta = $idoferta;
         $this->titulo = $titulo;
         $this->descritivo = $descritivo;
@@ -39,8 +41,26 @@ class OfertasTrabalho {
         $this->categoria_geral = $categoria_geral;
         $this->categoria_especifica = $categoria_especifica;
         $this->estado = $estado;
+        $this->dataCriacao= $dataCriacao;
+        $this->dataExpiracao= $dataExpiracao;
     }
-    function getEstado() {
+    function getDataCriacao() {
+        return $this->dataCriacao;
+    }
+
+    function getDataExpiracao() {
+        return $this->dataExpiracao;
+    }
+
+    function setDataCriacao($dataCriacao) {
+        $this->dataCriacao = $dataCriacao;
+    }
+
+    function setDataExpiracao($dataExpiracao) {
+        $this->dataExpiracao = $dataExpiracao;
+    }
+
+        function getEstado() {
         return $this->estado;
     }
 
@@ -131,7 +151,9 @@ public function convertObjectToArray(){
                         'TipoHorario' => $this->getTipoHorario(),
                           'categoria_geral' => $this->getCategoria_geral(),
                         'categoria_especifica' => $this->getCategoria_especifica(),
-                        'estado' => $this->getEstado());        
+                        'estado' => $this->getEstado(),
+                        'dataCriacao' => $this->getDataCriacao(),
+                        'dataExpiracao' => $this->getDataExpiracao());        
         
         return $data;
     }
@@ -140,7 +162,7 @@ public function convertObjectToArray(){
         return self::createObject($data['studentID'], $data['studentName'], $data['courseID']);
     }    
     
-    public static function createObject($idoferta,$titulo,$descritivo,$requisitos,$valores_servicos,$periodo_disponivel,$TipoHorario,$categoria_geral,$categoria_especifica,$estado){
+    public static function createObject($idoferta,$titulo,$descritivo,$requisitos,$valores_servicos,$periodo_disponivel,$TipoHorario,$categoria_geral,$categoria_especifica,$estado,$dataCriacao,$dataExpiracao){
         $ofertas = new OfertasTrabalho();
         $ofertas->setIdoferta($idoferta);
         $ofertas->setTitulo($titulo);
@@ -152,6 +174,8 @@ public function convertObjectToArray(){
         $ofertas->setCategoria_geral($categoria_geral);
         $ofertas->setCategoria_especifica($categoria_especifica);
         $ofertas->setEstado($estado);
+        $ofertas->setDataCriacao($dataCriacao);
+        $ofertas->setDataExpiracao($dataExpiracao);
         
         return $ofertas;
     }

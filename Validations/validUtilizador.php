@@ -16,6 +16,7 @@ $select = mysql_select_db("$log") or die("Sem acesso ao DB, Entre em contato com
 //print_r($password);
 $result = mysql_query("SELECT * FROM `utilizador` WHERE `username` = '$login' AND `password`='$password'  AND `perfil`= 'empregador'");
 $resultado = mysql_query("SELECT * FROM `utilizador` WHERE `username` = '$login' AND `password`= '$password' AND `perfil`= 'admin'");
+$other = mysql_query("SELECT * FROM `utilizador` WHERE `username` = '$login' AND `password`= '$password' AND `perfil`= 'prestador'");
 
 /* Logo abaixo temos um bloco com if e else, verificando se a variável $result foi bem sucedida, ou seja se ela estiver encontrado algum registo idêntico o seu valor será igual a 1, se não, se não tiver registos o seu valor será 0. Dependendo do resultado ele redirecionará para a pagina "" ou retornara  para a pagina do formulário inicial para que se possa tentar novamente realizar o login */
 if (mysql_num_rows($result) > 0) {
@@ -28,9 +29,14 @@ if (mysql_num_rows($result) > 0) {
     $_SESSION['username'] = $login;
     $_SESSION['password'] = $password;
        header('location:../paginaInicialAdmin.php');//página redireciona apos admin ser confirmado
-       }else{
+       }else
+           if(mysql_num_rows($other) > 0){
+               $_SESSION['username'] = $login;
+    $_SESSION['password'] = $password;
+    header('location:../paginaInicialPreServico.php');
+           }else{
     unset($_SESSION['username']);
     unset($_SESSION['password']);
     //header('location:../index.php');//caso falhe o login redireciona para pagina login
        }
-}
+       }

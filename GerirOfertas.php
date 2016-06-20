@@ -27,7 +27,7 @@ require_once './Application/Model/Morada.php';
             <p>Adicionar Oferta</p>
             <form action="Validations/validOferta.php" method="post">
                 <label>titulo<input placeholder="titulo" type="text" name="titulo"></label><br>
-                <label>descritivo<input placeholder="descritivo" type="text" name="descritivo"></label><br>
+                <label>descritivo<textarea placeholder="descritivo" type="text" name="descritivo"></textarea></label><br>
                 <label>requisitos<input placeholder="requisitos" type="text" name="requisitos"></label><br>
                 <label>valores<input placeholder="valores" type="text" name="valores"></label><br>
                 <label>periodo<input placeholder="periodo" type="text" name="periodo"></label><br>
@@ -60,7 +60,7 @@ foreach($rows as $row){
     echo $eemail . '<br/>';
 
     echo $epost . '<br/><br/><br/><br/>';
-    ?><button type="submit"><a href="Validations/validEliminarEmp.php?cod=<?=$ename?>">Eliminar</a></button><section></section> <?php
+    ?><button type="submit"><a href="Validations/eliminarOferta.php?cod=<?=$ename?>&pagina=<?="GerirOfertas"?>">Eliminar</a></button><section></section> <?php
 }
             ?>
         </div>

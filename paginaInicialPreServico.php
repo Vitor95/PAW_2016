@@ -11,7 +11,7 @@ and open the template in the editor.
     <body>
 
         <?php
-        include '/comon/topMenu.php';
+        include '/comon/topMenuPrestador.php';
         
         ?>
 

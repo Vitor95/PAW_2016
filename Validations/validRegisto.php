@@ -6,6 +6,7 @@ require_once '../Application/Model/Utilizador.php';
 require_once '../Application/Manager/MoradaManager.php';
 require_once '../Application/Model/Morada.php';
 
+
 $num=filter_input(INPUT_POST, 'Nome/empresa', FILTER_SANITIZE_SPECIAL_CHARS);
 $num1=filter_input(INPUT_POST, 'foto', FILTER_SANITIZE_SPECIAL_CHARS);
 $num2=filter_input(INPUT_POST, 'Contacto', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -18,9 +19,14 @@ $num8=filter_input(INPUT_POST, 'Numero_Porta', FILTER_SANITIZE_SPECIAL_CHARS);
 $num9=filter_input(INPUT_POST, 'Localidade', FILTER_SANITIZE_SPECIAL_CHARS);
 $num10=filter_input(INPUT_POST, 'Codigo-Postal', FILTER_SANITIZE_SPECIAL_CHARS);
 
-$a=new Utilizador("", $num, $num1, $num2, $num3, $num4, $num5, $num6);
+
+$target_dir = "images/";
+$target_file = $target_dir . $num1;
+
+
+$a=new Utilizador("", $num, $target_file, $num2, $num3, $num4, $num5, $num6);
 $w=new UtilizadorManager();
-//print_r($num8);
+
  $con = mysql_connect("localhost", "root", "") or die ("Sem conexão com o servidor"); 
 $select = mysql_select_db("tp_paw") or die("Sem acesso ao DB, Entre em contato com o Administrador");
 $w->createUtilizador($a);
@@ -33,5 +39,4 @@ $mo=new MoradaManager();
 $mo->createMorada($morada);
 echo "Registado com sucesso!!!";
 echo "<script>setTimeout(\"location.href = '../index.php';\",1500);</script>";
-  //header("location:../index.php"); 
   

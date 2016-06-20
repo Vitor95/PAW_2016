@@ -52,9 +52,10 @@ foreach($rows as $row){
     $eemail = ($row['email']);
     $epost = ($row['perfil']);
     $eid = $row['idUtilizador'];
+    $foto = $row['foto'];
     
     echo $eid . '<br/>';
-
+    echo '<img src="'.$foto.'" alt="foto" style="width:128px;height:128px">';
     echo $ename . '<br/>';
 
     echo $eemail . '<br/>';

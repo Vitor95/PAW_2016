@@ -20,17 +20,26 @@ $num6=filter_input(INPUT_POST, 'categoria_geral', FILTER_SANITIZE_SPECIAL_CHARS)
 $num7=filter_input(INPUT_POST, 'categoria_esp', FILTER_SANITIZE_SPECIAL_CHARS);
 $num8=filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_SPECIAL_CHARS);
 
+
+function curdate() {
+    return date('Y-m-d');
+}
+echo curdate();
+$date=  curdate();
+$newDate=date('Y-m-d',strtotime($date . "+3 days"));
+//print_r($newDate);
+
 $bd=filter_input(INPUT_POST, 'BD', FILTER_SANITIZE_SPECIAL_CHARS);
 $con = mysql_connect("localhost", "root", "") or die ("Sem conexão com o servidor"); 
 $select = mysql_select_db("tp_paw") or die("Sem acesso ao DB, Entre em contato com o Administrador");
 if($bd==='AdicionarBD'){
     $num8="Pendente";
-    $a=new OfertasTrabalho("", $num, $num1, $num2, $num3, $num4, $num5, $num6, $num7,$num8);
+    $a=new OfertasTrabalho("", $num, $num1, $num2, $num3, $num4, $num5, $num6, $num7,$num8, $date,$newDate);
     $w=new OfertaTrabalhoManager();
     header("location:../CriarOfertasTrabalhoEmpregador.php");
 }else{
     $num8="Publicadas";
-    $a=new OfertasTrabalho("", $num, $num1, $num2, $num3, $num4, $num5, $num6, $num7,$num8);
+    $a=new OfertasTrabalho("", $num, $num1, $num2, $num3, $num4, $num5, $num6, $num7,$num8, $date,$newDate);
     $w=new OfertaTrabalhoManager();
     header("location:../GerirOfertas.php");
 }
@@ -41,7 +50,8 @@ $query_select = "SELECT MAX(idoferta) FROM ofertastrabalho";
 $result = mysql_query($query_select);
 $id = mysql_fetch_row($result);
 $idUtilizador=$id[0];
-$z=new ofertautilizador($idUtilizador, $_SESSION['username']);
+print_r($_SESSION['username']);
+$z=new ofertautilizador($idUtilizador, $_SESSION['username'],"null","","null");
 $zz=new ofertautilizadorManager();
 $zz->createofertautilizador($z);
 

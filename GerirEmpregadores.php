@@ -60,7 +60,7 @@ foreach($rows as $row){
     echo $eemail . '<br/>';
 
     echo $epost . '<br/><br/><br/><br/>';
-    ?><button type="submit"><a href="Validations/validEliminarEmp.php?cod=<?=$eid?>">Eliminar</a></button><section></section> <?php
+    ?><button type="submit"><a href="Validations/validEliminarEmp.php?cod=<?=$eid?>&perfil=<?="empregador"?>">Eliminar</a></button><section></section> <?php
 }
             ?>
         </div>

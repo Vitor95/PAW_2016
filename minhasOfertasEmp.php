@@ -33,7 +33,27 @@ if(isset($_GET['status'])){
             <?php
             $a=new UtilizadorManager();
             $con = mysql_connect("localhost", "root", "") or die ("Sem conexão com o servidor"); 
-$select = mysql_select_db("tp_paw") or die("Sem acesso ao DB, Entre em contato com o Administrador");
+            $select = mysql_select_db("tp_paw") or die("Sem acesso ao DB, Entre em contato com o Administrador");
+            
+            function expirado($id){
+               
+            $querys="SELECT idoferta FROM ofertastrabalho WHERE idoferta='$id' and dataExpiracao <= DATE(NOW())";
+            $result = mysql_query($querys);
+            $id = mysql_fetch_row($result);
+            $idUtilizador=$id[0];
+                       // print_r($idUtilizador);
+            return $idUtilizador;
+            }
+            
+            function update($id){
+            $sql = "UPDATE ofertastrabalho SET estado = 'Finalizada' WHERE idoferta = '$id'";
+            mysql_query($sql);
+            }
+            
+            
+            
+            
+            
             $query_select = "SELECT * FROM ofertastrabalho inner join ofertautilizador on ofertastrabalho.idoferta=ofertautilizador.idoferta where ofertautilizador.utilizador='$logado'";
 $result_select = mysql_query($query_select) or die(mysql_error());
 $rows = array();
@@ -44,22 +64,32 @@ while($row = mysql_fetch_array($result_select))
         print_r("Não existem ofertas da sua Parte");
 }
 foreach($rows as $row){
-    ?><section></section><?php
+    ?><section class="section"></section><?php
+    
     $ename = ($row['utilizador']);
     $eemail = ($row['titulo']);
     $epost = ($row['descritivo']);
     $eid = $row['TipoHorario'];
-    $idOferta = $row['idoferta'];
+    $idOferta = $row['idoferta'];$res=expirado($idOferta);
     
-    echo $eid . '<br/>';
+    
+    echo $eid . '<br/>';echo $idOferta . '<br/>';
 
     echo $ename . '<br/>';
 
     echo $eemail . '<br/>';
 
-    echo $epost . '<br/><br/><br/><br/>';
-    ?><button type="submit"><a href="Validations/eliminarOferta.php?cod=<?=$idOferta?>">Eliminar</a><button type="submit"><a href="Validations/updateOferta.php?estado=<?="Publicada"?>&cod=<?=$idOferta?>">Publicar</a></button></button><section></section> <?php
-}
+    echo $epost ;
+    
+       if($res!==null){
+        print_r("<br>"."expirado"."<br>");
+                update($idOferta);
+      ?>  <button type="submit"><a href="Validations/eliminarOferta.php?cod=<?=$idOferta?>">Eliminar</a></button><section></section><br/><br/><br/>
+   <?php   }else{?>
+        <button type="submit"><a href="Validations/updateOferta.php?estado=<?="Publicada"?>&cod=<?=$idOferta?>">Publicar</a></button><button type="submit"><a href="Validations/eliminarOferta.php?cod=<?=$idOferta?>">Eliminar</a></button><section></section><br/> <?php
+        }
+        
+        }
             ?>
         </div>
 

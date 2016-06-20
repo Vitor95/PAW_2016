@@ -22,7 +22,7 @@ and open the template in the editor.
             <p>Adicionar Oferta</p>
             <form action="" method="post" id="forms">
                 <label>titulo<input placeholder="titulo" type="text" id="ti" name="titulo"></label><br>
-                <label>descritivo<input placeholder="descritivo" type="text" id="des" name="descritivo"></label><br>
+                <label>descritivo<textarea placeholder="descritivo" type="text" id="des" name="descritivo"></textarea></label><br>
                 <label>requisitos<input placeholder="requisitos" type="text" id="req" name="requisitos"></label><br>
                 <label>valores<input placeholder="valores" type="text" id="valores" name="valores"></label><br>
                 <label>periodo<input placeholder="periodo" type="text" id="periodo" name="periodo"></label><br>

@@ -5,6 +5,7 @@ require_once '../Application/Manager/UtilizadorManager.php';
 require_once '../Application/Model/Utilizador.php';
 
 $num=filter_input(INPUT_GET, 'cod', FILTER_SANITIZE_SPECIAL_CHARS);
+$perfil=filter_input(INPUT_GET, 'perfil', FILTER_SANITIZE_SPECIAL_CHARS);
 $a=new Utilizador($num, null, null, null, null, null, null, null);
 $w=new UtilizadorManager();
 
@@ -14,6 +15,9 @@ $query_select = "DELETE FROM `utilizador` WHERE `utilizador`.`idUtilizador` = '$
 $w->deleteUtilizador($a);
 
   echo "Record deleted successfully";
+  if($perfil==="empregador"){
     header("location:../GerirEmpregadores.php");  
-
+}else{
+    header("location:../GerirPrestadores.php");
+}
  

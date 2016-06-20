@@ -31,28 +31,26 @@ $idUtilizador=$id[0];
 
 
 
-
-            $query_select = "SELECT * FROM ofertastrabalho";
+$query_select = "SELECT * FROM ofertautilizador inner join ofertastrabalho on ofertautilizador.idOferta= ofertastrabalho.idoferta where ofertautilizador.idCandidato='$idUtilizador' and ofertautilizador.estado='Favorito'";
 $result_select = mysql_query($query_select) or die(mysql_error());
 $rows = array();
 while($row = mysql_fetch_array($result_select))
     $rows[] = $row;
 foreach($rows as $row){ 
     ?><section></section><?php
-    $ename = ($row['idoferta']);
+    
     $eemail = ($row['titulo']);
     $epost = ($row['descritivo']);
     $eid = $row['requisitos'];
+    $utili = $row['utilizador'];
+    $time = $row['TipoHorario'];
     
+    echo 'Empregador:'.$utili.'<br/>';
     echo $eid . '<br/>';
-
-    echo $ename . '<br/>';
-
     echo $eemail . '<br/>';
-
+    echo $time . '<br/>';
     echo $epost . '<br/><br/><br/><br/>';
-    ?><button type="submit"><a href="Validations/validCandidatura.php?cod=<?=$ename?>&estado=<?="Submetido"?>&idC=<?=$idUtilizador?>&username=<?=$logado?>">Candidatar</a></button><button type="submit"><a href="Validations/updateFavorito.php?cod=<?=$ename?>&estado=<?="Favorito"?>&idC=<?=$idUtilizador?>&username=<?=$logado?>">Guardar como Favorito</a></button><section></section> <?php
-}
+    }
             ?>
         </div>
         <?pHP
@@ -60,3 +58,4 @@ foreach($rows as $row){
         ?>
     </body>
 </html>
+

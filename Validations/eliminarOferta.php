@@ -7,9 +7,10 @@ require_once '../Application/Manager/ofertautilizadorManager.php';
 require_once '../Application/Model/ofertautilizador.php';
 
 $num=filter_input(INPUT_GET, 'cod', FILTER_SANITIZE_SPECIAL_CHARS);
-$oferta=new OfertasTrabalho($num, null, null, null, null, null, null, null, null, null);
+$gerir=filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_SPECIAL_CHARS);
+$oferta=new OfertasTrabalho($num, null, null, null, null, null, null, null, null, null,null,null);
 $ofertas=new OfertaTrabalhoManager();
-$a=new ofertautilizador($num, null);
+$a=new ofertautilizador($num, null,null,null,null);
 $w=new ofertautilizadorManager();
 
  $con = mysql_connect("localhost", "root", "") or die ("Sem conexão com o servidor"); 
@@ -18,4 +19,9 @@ $select = mysql_select_db("tp_paw") or die("Sem acesso ao DB, Entre em contato c
 $w->deleteofertautilizador($a);
 $ofertas->deleteOferta($oferta);
 
-    header("location:../minhasOfertasEmp.php");  
+
+if($gerir==="GerirOfertas"){
+     header("location:../GerirOfertas.php"); 
+}else{
+    header("location:../minhasOfertasEmp.php"); 
+}

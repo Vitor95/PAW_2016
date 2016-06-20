@@ -14,10 +14,42 @@
 class ofertautilizador {
     private $idOferta;
     private $utilizador;
-    function __construct($idOferta, $utilizador) {
+    private $estado;
+    private $idCandidato;
+    private $username;
+    
+    function __construct($idOferta, $utilizador, $estado, $idCandidato, $username) {
         $this->idOferta = $idOferta;
         $this->utilizador = $utilizador;
+        $this->estado = $estado;
+        $this->idCandidato = $idCandidato;
+        $this->username = $username;
     }
+    function getEstado() {
+        return $this->estado;
+    }
+
+    function getIdCandidato() {
+        return $this->idCandidato;
+    }
+
+    function getUsername() {
+        return $this->username;
+    }
+
+    function setEstado($estado) {
+        $this->estado = $estado;
+    }
+
+    function setIdCandidato($idCandidato) {
+        $this->idCandidato = $idCandidato;
+    }
+
+    function setUsername($username) {
+        $this->username = $username;
+    }
+
+    
     function getIdOferta() {
         return $this->idOferta;
     }
@@ -37,7 +69,10 @@ class ofertautilizador {
  public function convertObjectToArray(){
         $data = array( 
                         'idOferta' => $this->getIdOferta(), 
-                        'utilizador' => $this->getUtilizador());        
+                        'utilizador' => $this->getUtilizador(),
+                        'estado' =>$this->getEstado(),
+                        'idCandidato'=>$this->getIdCandidato(),
+                        'username' =>$this->getUsername());        
         
         return $data;
     }
@@ -46,11 +81,14 @@ class ofertautilizador {
         return self::createObject($data['studentID'], $data['studentName'], $data['courseID']);
     }    
     
-    public static function createObject($idOferta,$utilizador){
+    public static function createObject($idOferta,$utilizador,$estado, $idCandidato, $username){
         $ofutilizador = new ofertautilizador();
         $ofutilizador->setIdOferta($idOferta);
         $ofutilizador->setUtilizador($utilizador);
+        $ofutilizador->setEstado($estado);
+        $ofutilizador->setIdCandidato($idCandidato);
+        $ofutilizador->setUsername($username);
         
-        return $utilizador;
+        return $ofutilizador;
     }
 }
